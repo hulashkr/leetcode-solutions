@@ -40,13 +40,14 @@ public:
         if(root->left==NULL && root->right==NULL) return 1;
         
         // for other cases root node will be counted as good node so cntGoodNode=1
-        int cntGoodNode=1;
+        int cntGoodNode=0;
+        int maxi = root->val;
+        cntGoodNode += solve(root,maxi);
+//         // count the no. of good nodes in left subtree 
+//         cntGoodNode += solve(root->left,root->val);
         
-        // count the no. of good nodes in left subtree 
-        cntGoodNode += solve(root->left,root->val);
-        
-        // count the no. of good nodes in right subtree
-        cntGoodNode += solve(root->right,root->val);
+//         // count the no. of good nodes in right subtree
+//         cntGoodNode += solve(root->right,root->val);
         
         return cntGoodNode;
         
