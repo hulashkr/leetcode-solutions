@@ -17,12 +17,12 @@ public:
             temp=temp->next;
             cnt++;
         }
-        cout<<cnt;
+        cout<<cnt<<" ";
         int m=0;
         if(cnt==n){
-            ListNode* node=head;
+            // ListNode* node=head;
             head=head->next;
-            delete(node);
+            // delete(node);
             return head;
         }
         ListNode* temp1=head;
