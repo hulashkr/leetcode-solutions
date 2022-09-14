@@ -11,7 +11,7 @@
  */
 class Solution {
 public:
-    void solve(TreeNode* root,vector<int> freq, int &cnt){
+    void solve(TreeNode* root,vector<int> &freq, int &cnt){
         if(!root) return;
         freq[root->val]++;
         solve(root->left,freq,cnt);
@@ -23,6 +23,7 @@ public:
             if(cnto<=1) cnt++;
         }
         solve(root->right,freq,cnt);
+        freq[root->val]--;
     }
     int pseudoPalindromicPaths (TreeNode* root) {
         vector<int> freq(10,0);
