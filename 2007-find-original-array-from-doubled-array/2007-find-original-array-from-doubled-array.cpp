@@ -4,7 +4,7 @@ public:
         sort(changed.begin(),changed.end());
         int n=changed.size();
         if(n%2) return {};
-        map<int,int> mp;
+        unordered_map<int,int> mp;
         for(auto i : changed){
             mp[i]++;
         }
