@@ -2,16 +2,15 @@ class Solution {
 public:
     int minCost(string colors, vector<int>& neededTime) {
         int n=colors.size();
-        int sum=0;
+        int temp=neededTime[0],maxi=neededTime[0];
         for(int i=1; i<n ;i++){
-            if(colors[i]==colors[i-1]){
-                if(neededTime[i]<neededTime[i-1]) sum+=neededTime[i];
-                else sum+=neededTime[i-1];
-                if(neededTime[i-1]>neededTime[i]) swap(neededTime[i-1],neededTime[i]);
+            if(colors[i]!=colors[i-1]){
+                temp-=maxi;
+                maxi=0;
             }
-            else continue;
-            cout<<sum<<" & ";
+            temp+=neededTime[i];
+            maxi=max(maxi,neededTime[i]);
         }
-        return sum;
+        return temp-maxi;
     }
 };
