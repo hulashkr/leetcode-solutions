@@ -6,8 +6,8 @@ public:
             int cnt=0;
             int num=i;
             while(num){
-                cnt++;
-                num=num&(num-1);
+                if(num&1) cnt++;
+                num=num>>1;
             }
             ans.push_back(cnt);
         }
