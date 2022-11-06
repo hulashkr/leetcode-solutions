@@ -1,0 +1,50 @@
+//{ Driver Code Starts
+// Initial Template for C++
+
+#include <bits/stdc++.h>
+using namespace std;
+
+// } Driver Code Ends
+// User function Template for C++
+
+class Solution{
+public:
+    vector<int> minPartition(int N)
+    {
+        // code here
+        vector<int> ans;
+        vector<int> coins{1,2,5,10,20,50,100,200,500,2000};
+        int sum=N;
+        for(int i=9; i>=0; i--){
+            int temp=sum/coins[i];
+            int rem=sum%coins[i];
+            // cout<<"temp : "<<temp<<endl;
+            if(rem!=N){
+                for(int j=1; j<=temp; j++){
+                    ans.push_back(coins[i]);
+                }
+                sum-=temp*coins[i];
+            }
+        }
+        return ans;
+    }
+};
+
+//{ Driver Code Starts.
+
+int main(){
+    int t;
+    cin>>t;
+    while(t--){
+        int N;
+        cin>>N;
+        
+        Solution ob;
+        vector<int> numbers = ob.minPartition(N);
+        for(auto u: numbers)
+            cout<<u<<" ";
+        cout<<"\n";
+    }
+    return 0;
+}
+// } Driver Code Ends
