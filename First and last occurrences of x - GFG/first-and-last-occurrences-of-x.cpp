@@ -3,26 +3,53 @@
 using namespace std;
 
 // } Driver Code Ends
+
+int firstOccurence(int arr[],int n,int x)
+{
+    int i=0,j=n-1;
+    while(i<=j)
+    {
+        int m = i+(j-i)/2;
+        if(arr[m]==x)
+        {
+            if(arr[m]==arr[m-1]) j=m-1;
+            else return m;
+        }
+        else if(arr[m]>x)
+        {
+            j=m-1;
+        }
+        else i=m+1;
+    }
+    return -1;
+}
+int lastOccurence(int arr[],int n,int x)
+{
+    int i=0,j=n-1;
+    while(i<=j)
+    {
+        int m=i+(j-i)/2;
+        if(arr[m]==x)
+        {
+            if(m<n-1 && arr[m]==arr[m+1]) i=m+1;
+            else return m;
+        }
+        else if(arr[m]>x)
+        {
+            j=m-1;
+        }
+        else i=m+1;
+    }
+    return -1;
+}
 vector<int> find(int arr[], int n , int x )
 {
     // code here
     vector<int> ans(2,-1);
-    for(int i=0; i<n; i++)
-    {
-        if(arr[i]==x)
-        {
-            ans[0]=i;
-            break;
-        }
-    }
-    for(int i=n-1; i>=0; i--)
-    {
-        if(arr[i]==x)
-        {
-            ans[1]=i;
-            break;
-        }
-    }
+    int firstOccur = firstOccurence(arr,n,x);
+    int lastOccur = lastOccurence(arr,n,x);
+    ans[0]=firstOccur;
+    ans[1]=lastOccur;
     return ans;
 }
 
